@@ -38,10 +38,9 @@ public class Vector extends Point {
 
     //function that calculates a vector product
     public Vector crossProduct (Vector v1) {
-        return new Vector(this.xyz.d1*v1.xyz.d2-this.xyz.d2*v1.xyz.d1 ,
-                           this.xyz.d1*v1.xyz.d3-this.xyz.d3*v1.xyz.d1 ,
-                           this.xyz.d2*v1.xyz.d3-this.xyz.d3*v1.xyz.d2);
-
+        return new Vector(this.xyz.d2*v1.xyz.d3-this.xyz.d3*v1.xyz.d2,
+                          this.xyz.d1*v1.xyz.d3-this.xyz.d3*v1.xyz.d1 ,
+                          this.xyz.d1*v1.xyz.d2-this.xyz.d2*v1.xyz.d1);
     }
 
     // Calculation of the squared length of the vector - (|vector|^2) = vector^2
