@@ -8,8 +8,15 @@ public class Ray {
 
     public Ray(Point head, Vector direction) {
         this.head = head;
+        if (direction.length()!=1)
+        {
+            this.direction = direction.normalize();//בדיקה שהנורמל מנורמל אחרת לנרמל
+        }
+        else
+        {
+            this.direction= direction;
+        }
 
-        this.direction = direction; //בדיקה אם הוקטור מנורמל אם לא לנרמל ולשמור
     }
 
     @Override
