@@ -30,12 +30,12 @@ public class Vector extends Point {
         return new Vector(xyz.scale(rhs));
     }
 
-    //function that multiplies a vector by a number
+    //function that multiplies a vector by a vector the result given number
     public double dotProduct(Vector v1) {
         return this.xyz.d1 * v1.xyz.d1 + this.xyz.d2 * v1.xyz.d2 + this.xyz.d3 * v1.xyz.d3;
     }
 
-    //function that calculates a vector product
+    //function that calculates a vector product - the result given vector
     public Vector crossProduct(Vector v1) {
         return new Vector(this.xyz.d2 * v1.xyz.d3 - this.xyz.d3 * v1.xyz.d2,
                 this.xyz.d3 * v1.xyz.d1 - this.xyz.d1 * v1.xyz.d3,
