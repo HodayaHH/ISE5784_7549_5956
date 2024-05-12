@@ -9,7 +9,7 @@ public class Point {
 
     //    //Parameter constructor
     public Point(double x, double y, double z) {
-        xyz = new Double3(x,y,z);
+        xyz = new Double3(x, y, z);
     }
 
     //Parameter constructor
@@ -48,7 +48,7 @@ public class Point {
 
     //function that calculates the distance between two points in a square
     public double distanceSquared(Point p1) {
-        return Math.pow(this.xyz.d1-p1.xyz.d1,2)+Math.pow(this.xyz.d2-p1.xyz.d2,2)+Math.pow(this.xyz.d3-p1.xyz.d3,2);
+        return Math.pow(this.xyz.d1 - p1.xyz.d1, 2) + Math.pow(this.xyz.d2 - p1.xyz.d2, 2) + Math.pow(this.xyz.d3 - p1.xyz.d3, 2);
     }
 
     //function that calculates the distance between two points
