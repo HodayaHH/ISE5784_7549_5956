@@ -25,15 +25,15 @@ public class Point {
                 '}';
     }
 
-    //?????????????????????????/
+
     //override equals function
     @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Point point)) return false;
-
-        return Objects.equals(xyz, point.xyz);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        return (obj instanceof Point other)
+                && this.xyz.equals(other.xyz);
     }
+
 
 
     //function that subtracts a point from another point, meaning a new vector is created
