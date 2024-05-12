@@ -5,8 +5,9 @@ import primitives.Ray;
 import primitives.Vector;
 
 public class Tube extends RadialGeometry {
-   final  protected Ray myRay;
+    final protected Ray myRay;
 
+    //Parameter constructor
     public Tube(double radius, Ray myRay) {
         super(radius);
         this.myRay = myRay;

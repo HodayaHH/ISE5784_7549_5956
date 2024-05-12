@@ -7,6 +7,7 @@ public class Sphere extends RadialGeometry {
 
     final private Point center;
 
+    //Parameter constructor
     public Sphere(double radius, Point center) {
         super(radius);
         this.center = center;
