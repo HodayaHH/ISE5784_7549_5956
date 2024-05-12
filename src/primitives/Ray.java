@@ -29,10 +29,11 @@ public class Ray {
 
     //override equals function
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Ray ray)) return false;
-        return Objects.equals(head, ray.head) && Objects.equals(direction, ray.direction);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        return  (obj instanceof Ray other)
+                && this.head.equals(other.head)
+                && this.direction.equals (other.direction);
     }
 
 }
