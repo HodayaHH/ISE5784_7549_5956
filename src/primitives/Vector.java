@@ -59,4 +59,5 @@ public class Vector extends Point {
         double l1= length();
         return  new Vector(xyz.d1/l1,xyz.d2/l1,xyz.d3/l1);
     }
+
 }
