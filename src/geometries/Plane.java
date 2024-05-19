@@ -9,12 +9,7 @@ public class Plane implements Geometry {
 
     public Plane(Point point1, Vector normal) {
         this.myPint = point1;
-        if (normal.length() != 1)//Checking whether the length is not equal 1
-        {
-            this.normal = normal.normalize();//So normalize and save in the field
-        } else {
-            this.normal = normal;
-        }
+        this.normal = normal.normalize();//So normalize and save in the field
 
     }
 

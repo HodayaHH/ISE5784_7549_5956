@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
                 ,"ERROR: (point + vector) = center of coordinates does not work correctly");
     }
 
-    /**
+   /**
      *  Test method for Distance Squared
      */
     @Test
@@ -65,14 +65,19 @@ import static org.junit.jupiter.api.Assertions.*;
         Point  p1 = new Point(1, 2, 3);
         Point  p3 = new Point(2, 4, 5);
 
-        assertNotEquals(0, p1.distance(p3) - 3
-                ,"ERROR: distance between points to itself is wrong");
+        assertEquals(3,
+                p1.distance(p3),
+                0.0001,
+                "ERROR: distance between points to itself is wrong");
 
-        assertNotEquals(0, p3.distance(p1) - 3
-                ,"ERROR: distance between points to itself is wrong");
+        assertEquals(3,
+                p3.distance(p1),
+                0.0001,
+                "ERROR: distance between points to itself is wrong");
 
-        assertNotEquals(0, p1.distance(p1)
-                ,"ERROR: point distance to itself is not zero");
+        assertEquals(0,
+                p1.distance(p1),
+                "ERROR: point distance to itself is not zero");
 
 
 
