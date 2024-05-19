@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
         assertThrows(IllegalArgumentException.class,
                 ()->p1.subtract(p1),
                 "ERROR: (point - itself) does not throw an exception");
+
     }
 
     /**
@@ -46,13 +47,19 @@ import static org.junit.jupiter.api.Assertions.*;
         Point  p1  = new Point(1, 2, 3);
         Point  p3  = new Point(2, 4, 5);
 
-       assertNotEquals(0,p1.distanceSquared(p1),
+        assertEquals(0,
+                p1.distanceSquared(p1),
+                0.0001,
                "ERROR: point squared distance to itself is not zero");
 
-       assertNotEquals(0,  p1.distanceSquared(p3) - 9,
+        assertEquals(9,
+               p1.distanceSquared(p3) ,
+               0.0001,
                "ERROR: squared distance between points is wrong");
 
-        assertNotEquals(0,  p3.distanceSquared(p1) - 9,
+        assertEquals(9,
+                p3.distanceSquared(p1) ,
+                0.0001,
                 "ERROR: squared distance between points is wrong");
 
     }
