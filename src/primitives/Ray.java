@@ -6,16 +6,14 @@ public class Ray {
     final private Point head;
     final private Vector direction;
 
-    //Parameter constructor
+    /**
+     * Parameter constructor
+     * @param head
+     * @param direction
+     */
     public Ray(Point head, Vector direction) {
         this.head = head;
-        if (direction.length() != 1) //Checking whether the length of the direction vector is different from 1
-        {
-            this.direction = direction.normalize(); //Normalizes the direction vector
-        } else {
-            this.direction = direction;
-        }
-
+        this.direction = direction.normalize(); //Normalizes the direction vector
     }
 
     //Override function toString
