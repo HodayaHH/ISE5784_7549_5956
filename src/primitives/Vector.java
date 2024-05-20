@@ -11,9 +11,9 @@ public class Vector extends Point {
     }
 
     // Parameter constructor
-    public Vector(Double3 double3) {
-        super(double3);
-        if (double3.equals(Double3.ZERO))//Checking if the value is the zero vector
+    public Vector(Double3 xyz) {
+        super(xyz);
+        if (xyz.equals(Double3.ZERO))//Checking if the value is the zero vector
         {
             throw new IllegalArgumentException("The zero vector is not possible"); // The zero vector is not possible
         }
@@ -37,9 +37,11 @@ public class Vector extends Point {
 
     //function that calculates a vector product - the result given vector
     public Vector crossProduct(Vector v1) {
-        return new Vector(this.xyz.d2 * v1.xyz.d3 - this.xyz.d3 * v1.xyz.d2,
+        return new Vector(
+                this.xyz.d2 * v1.xyz.d3 - this.xyz.d3 * v1.xyz.d2,
                 this.xyz.d3 * v1.xyz.d1 - this.xyz.d1 * v1.xyz.d3,
-                this.xyz.d1 * v1.xyz.d2 - this.xyz.d2 * v1.xyz.d1);
+                this.xyz.d1 * v1.xyz.d2 - this.xyz.d2 * v1.xyz.d1
+        );
     }
 
     // Calculation of the squared length of the vector - (|vector|^2) = vector^2
@@ -55,8 +57,11 @@ public class Vector extends Point {
     //A normalization method that returns a new normalized vector - (a unit vector in the same direction as
     // the original vector)
     public Vector normalize() {
-        double l1 = length();
-        return new Vector(xyz.d1 / l1, xyz.d2 / l1, xyz.d3 / l1);
+        double length = length();
+
+        //&&&&&&&&&&&&&&&&&&&&&&&&&
+        //ביקש בשורה הזאת לעשות משהו אחר
+        return new Vector(xyz.d1 / length, xyz.d2 / length, xyz.d3 / length);
     }
 
     // override toString function

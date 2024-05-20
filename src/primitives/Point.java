@@ -35,17 +35,31 @@ public class Point {
     }
 
 
-
+    /**
+     *
+     * @param p1
+     * @return
+     */
     //function that subtracts a point from another point, meaning a new vector is created
     public Vector subtract(Point p1) {
         return new Vector(xyz.subtract(p1.xyz));
     }
 
-    //Adding a vector to a point - returns a new point
+    /**
+     *
+     * Adding a vector to a point
+     * @param v1
+     * @return a new point
+     */
     public Point add(Vector v1) {
         return new Point(xyz.add(v1.xyz));
     }
 
+
+    //&&&&&&&&&&&&&&&&&&
+    //החלפה של התיעוד לפי הפורמט המבוקש
+    //היה עוד משהו שביקש במחלקה וקטור
+    // לשנות ולהכפיל בעצמו במקום שימוש בפונקציה pow
     //function that calculates the distance between two points in a square
     public double distanceSquared(Point p1) {
         return Math.pow(this.xyz.d1 - p1.xyz.d1, 2) + Math.pow(this.xyz.d2 - p1.xyz.d2, 2) + Math.pow(this.xyz.d3 - p1.xyz.d3, 2);

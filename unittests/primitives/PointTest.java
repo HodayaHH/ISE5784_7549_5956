@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PointTest {
+/**
+ * Unit tests for primitives.Point class
+ */
+ class PointTest {
 
+    /**
+     *  Test method for Subtract operation
+     */
     @Test
     void testSubtract() {
         Point  p1 = new Point(1, 2, 3);
@@ -15,8 +21,12 @@ class PointTest {
         assertThrows(IllegalArgumentException.class,
                 ()->p1.subtract(p1),
                 "ERROR: (point - itself) does not throw an exception");
+
     }
 
+    /**
+     *  Test method for Add operation
+     */
     @Test
     void testAdd() {
         Point  p1  = new Point(1, 2, 3);
@@ -29,35 +39,52 @@ class PointTest {
                 ,"ERROR: (point + vector) = center of coordinates does not work correctly");
     }
 
+   /**
+     *  Test method for Distance Squared
+     */
     @Test
     void testDistanceSquared() {
         Point  p1  = new Point(1, 2, 3);
         Point  p3  = new Point(2, 4, 5);
 
-       assertNotEquals(0,p1.distanceSquared(p1),
+        assertEquals(0,
+                p1.distanceSquared(p1),
+                0.0001,
                "ERROR: point squared distance to itself is not zero");
 
-       assertNotEquals(0,  p1.distanceSquared(p3) - 9,
+        assertEquals(9,
+               p1.distanceSquared(p3) ,
+               0.0001,
                "ERROR: squared distance between points is wrong");
 
-        assertNotEquals(0,  p3.distanceSquared(p1) - 9,
+        assertEquals(9,
+                p3.distanceSquared(p1) ,
+                0.0001,
                 "ERROR: squared distance between points is wrong");
 
     }
 
+    /**
+     *  Test method for Distance
+     */
     @Test
     void testDistance() {
         Point  p1 = new Point(1, 2, 3);
         Point  p3 = new Point(2, 4, 5);
 
-        assertNotEquals(0, p1.distance(p3) - 3
-                ,"ERROR: distance between points to itself is wrong");
+        assertEquals(3,
+                p1.distance(p3),
+                0.0001,
+                "ERROR: distance between points to itself is wrong");
 
-        assertNotEquals(0, p3.distance(p1) - 3
-                ,"ERROR: distance between points to itself is wrong");
+        assertEquals(3,
+                p3.distance(p1),
+                0.0001,
+                "ERROR: distance between points to itself is wrong");
 
-        assertNotEquals(0, p1.distance(p1)
-                ,"ERROR: point distance to itself is not zero");
+        assertEquals(0,
+                p1.distance(p1),
+                "ERROR: point distance to itself is not zero");
 
 
 
