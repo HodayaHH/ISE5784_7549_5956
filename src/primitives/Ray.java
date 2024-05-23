@@ -2,6 +2,9 @@ package primitives;
 
 import java.util.Objects;
 
+/**
+ * class representing a Ray
+ */
 public class Ray {
     final private Point head;
     final private Vector direction;
