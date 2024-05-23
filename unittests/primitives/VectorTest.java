@@ -26,7 +26,7 @@ class VectorTest {
     }
 
     @Test
-    void testScale() {//האם םצריך לעשות בדיקות לפונקציה זו כי שולח לאבא
+    void testScale() {
         Vector v = new Vector(1, 2, 3);
         //Multiply by a positive number
         assertEquals(new Vector(2, 4, 6), v.scale(2), "ERROR: scale() by 2 does not work correctly");
@@ -50,7 +50,7 @@ class VectorTest {
         assertEquals(0,v1.dotProduct(v3),"ERROR: dotProduct() for orthogonal vectors is not zero");
         assertEquals(-28,v1.dotProduct(v2) ,"ERROR: dotProduct() wrong value");
         assertTrue(v.dotProduct(u) < 0,"ERROR: the normalized vector is opposite to the original one");
-        //----------
+
         assertEquals(0,vr.dotProduct(v1),"ERROR: crossProduct() result is not orthogonal to its operands");//-
         assertEquals(0,vr.dotProduct(v3),"ERROR: crossProduct() result is not orthogonal to its operands");//-
 

@@ -2,17 +2,27 @@ package primitives;
 
 import java.util.Objects;
 
-//class representing a point
+/**
+ * class representing a point
+ */
 public class Point {
     public static final Point ZERO = new Point(Double3.ZERO);
     final protected Double3 xyz;
 
-    //    //Parameter constructor
+    /**
+     *Parameter constructor
+     * @param x
+     * @param y
+     * @param z
+     */
     public Point(double x, double y, double z) {
         xyz = new Double3(x, y, z);
     }
 
-    //Parameter constructor
+    /**
+     * Parameter constructor
+     * @param xyz
+     */
     public Point(Double3 xyz) {
         this.xyz = xyz;
     }
@@ -36,11 +46,10 @@ public class Point {
 
 
     /**
-     *
+     *function that subtracts a point from another point
      * @param p1
-     * @return
+     * @return a new vector
      */
-    //function that subtracts a point from another point, meaning a new vector is created
     public Vector subtract(Point p1) {
         return new Vector(xyz.subtract(p1.xyz));
     }
@@ -60,12 +69,20 @@ public class Point {
     //החלפה של התיעוד לפי הפורמט המבוקש
     //היה עוד משהו שביקש במחלקה וקטור
     // לשנות ולהכפיל בעצמו במקום שימוש בפונקציה pow
-    //function that calculates the distance between two points in a square
+    /**
+     * function that calculates the distance between two points in a square
+     * @param p1
+     * @return
+     */
     public double distanceSquared(Point p1) {
         return Math.pow(this.xyz.d1 - p1.xyz.d1, 2) + Math.pow(this.xyz.d2 - p1.xyz.d2, 2) + Math.pow(this.xyz.d3 - p1.xyz.d3, 2);
     }
 
-    //function that calculates the distance between two points
+    /**
+     * function that calculates the distance between two points
+     * @param p1
+     * @return
+     */
     public double distance(Point p1) {
         return Math.sqrt(distanceSquared(p1));
     }
