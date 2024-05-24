@@ -12,7 +12,7 @@ class SphereTest {
      * */
     @Test
     void testGetNormal() {
-
+        //One equivalence class -(There is no extreme case)
         Sphere sphere = new Sphere(1,new Point(0, 0, 0));
         Point p1 = new Point(1, 0, 0);
         Vector normal = sphere.getNormal(p1);;

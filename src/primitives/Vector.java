@@ -57,7 +57,11 @@ public class Vector extends Point {
         return this.xyz.d1 * v1.xyz.d1 + this.xyz.d2 * v1.xyz.d2 + this.xyz.d3 * v1.xyz.d3;
     }
 
-    //function that calculates a vector product - the result given vector
+    /**
+     * function that calculates a vector product - the result given vector
+     * @param v1
+     * @return
+     */
     public Vector crossProduct(Vector v1) {
         return new Vector(
                 this.xyz.d2 * v1.xyz.d3 - this.xyz.d3 * v1.xyz.d2,
@@ -89,9 +93,6 @@ public class Vector extends Point {
      */
     public Vector normalize() {
         double length = length();
-
-        //&&&&&&&&&&&&&&&&&&&&&&&&&
-        //ביקש בשורה הזאת לעשות משהו אחר
         return new Vector(xyz.d1 / length, xyz.d2 / length, xyz.d3 / length);
     }
 

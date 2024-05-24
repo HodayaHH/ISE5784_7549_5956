@@ -64,18 +64,15 @@ public class Point {
         return new Point(xyz.add(v1.xyz));
     }
 
-
-    //&&&&&&&&&&&&&&&&&&
-    //החלפה של התיעוד לפי הפורמט המבוקש
-    //היה עוד משהו שביקש במחלקה וקטור
-    // לשנות ולהכפיל בעצמו במקום שימוש בפונקציה pow
     /**
      * function that calculates the distance between two points in a square
      * @param p1
      * @return
      */
     public double distanceSquared(Point p1) {
-        return Math.pow(this.xyz.d1 - p1.xyz.d1, 2) + Math.pow(this.xyz.d2 - p1.xyz.d2, 2) + Math.pow(this.xyz.d3 - p1.xyz.d3, 2);
+        return (this.xyz.d1 - p1.xyz.d1)*(this.xyz.d1 - p1.xyz.d1)+
+                (this.xyz.d2 - p1.xyz.d2)*(this.xyz.d2 - p1.xyz.d2) +
+                (this.xyz.d3 - p1.xyz.d3)*(this.xyz.d3 - p1.xyz.d3);
     }
 
     /**
