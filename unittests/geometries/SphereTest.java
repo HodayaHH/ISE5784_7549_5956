@@ -7,9 +7,12 @@ import primitives.Vector;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SphereTest {
-
+    /**
+     * Test method for Sphere.
+     * */
     @Test
     void testGetNormal() {
+
         Sphere sphere = new Sphere(1,new Point(0, 0, 0));
         Point p1 = new Point(1, 0, 0);
         Vector normal = sphere.getNormal(p1);;
