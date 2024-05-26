@@ -4,7 +4,7 @@ import primitives.Point;
 import primitives.Vector;
 
 /**
- *  class representing a Sphere
+ * class representing a Sphere
  */
 public class Sphere extends RadialGeometry {
 
@@ -12,6 +12,7 @@ public class Sphere extends RadialGeometry {
 
     /**
      * Parameter constructor
+     *
      * @param radius
      * @param center
      */
@@ -22,6 +23,7 @@ public class Sphere extends RadialGeometry {
 
     /**
      * function getNormal
+     *
      * @param p1
      * @return Normal vector of a sphere
      */

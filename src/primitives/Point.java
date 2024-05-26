@@ -10,7 +10,8 @@ public class Point {
     final protected Double3 xyz;
 
     /**
-     *Parameter constructor
+     * Parameter constructor
+     *
      * @param x
      * @param y
      * @param z
@@ -21,6 +22,7 @@ public class Point {
 
     /**
      * Parameter constructor
+     *
      * @param xyz
      */
     public Point(Double3 xyz) {
@@ -46,7 +48,8 @@ public class Point {
 
 
     /**
-     *function that subtracts a point from another point
+     * function that subtracts a point from another point
+     *
      * @param p1
      * @return a new vector
      */
@@ -55,8 +58,8 @@ public class Point {
     }
 
     /**
-     *
      * Adding a vector to a point
+     *
      * @param v1
      * @return a new point
      */
@@ -66,17 +69,19 @@ public class Point {
 
     /**
      * function that calculates the distance between two points in a square
+     *
      * @param p1
      * @return
      */
     public double distanceSquared(Point p1) {
-        return (this.xyz.d1 - p1.xyz.d1)*(this.xyz.d1 - p1.xyz.d1)+
-                (this.xyz.d2 - p1.xyz.d2)*(this.xyz.d2 - p1.xyz.d2) +
-                (this.xyz.d3 - p1.xyz.d3)*(this.xyz.d3 - p1.xyz.d3);
+        return (this.xyz.d1 - p1.xyz.d1) * (this.xyz.d1 - p1.xyz.d1) +
+                (this.xyz.d2 - p1.xyz.d2) * (this.xyz.d2 - p1.xyz.d2) +
+                (this.xyz.d3 - p1.xyz.d3) * (this.xyz.d3 - p1.xyz.d3);
     }
 
     /**
      * function that calculates the distance between two points
+     *
      * @param p1
      * @return
      */

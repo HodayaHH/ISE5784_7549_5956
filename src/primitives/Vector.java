@@ -6,6 +6,7 @@ package primitives;
 public class Vector extends Point {
     /**
      * Parameter constructor
+     *
      * @param x
      * @param y
      * @param z
@@ -19,6 +20,7 @@ public class Vector extends Point {
 
     /**
      * Parameter constructor
+     *
      * @param xyz
      */
     public Vector(Double3 xyz) {
@@ -32,6 +34,7 @@ public class Vector extends Point {
 
     /**
      * adding of 2 vectors
+     *
      * @param v1
      * @return a new vector
      */
@@ -41,6 +44,7 @@ public class Vector extends Point {
 
     /**
      * Multiplies a vector by a number
+     *
      * @param rhs
      * @return a new vector
      */
@@ -50,6 +54,7 @@ public class Vector extends Point {
 
     /**
      * function that multiplies a vector by a vector the result given number
+     *
      * @param v1
      * @return
      */
@@ -59,6 +64,7 @@ public class Vector extends Point {
 
     /**
      * function that calculates a vector product - the result given vector
+     *
      * @param v1
      * @return
      */
@@ -72,6 +78,7 @@ public class Vector extends Point {
 
     /**
      * Calculation of the squared length of the vector - (|vector|^2) = vector^2
+     *
      * @return
      */
     public double lengthSquared() {
@@ -80,6 +87,7 @@ public class Vector extends Point {
 
     /**
      * Calculate the length of the vector
+     *
      * @return
      */
     public double length() {
@@ -89,6 +97,7 @@ public class Vector extends Point {
     /**
      * A normalization method that returns a new normalized vector-
      * (a unit vector in the same direction as the original vector)
+     *
      * @return
      */
     public Vector normalize() {
@@ -108,10 +117,7 @@ public class Vector extends Point {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         return (obj instanceof Vector other)
-               && super.equals(other);
+                && super.equals(other);
     }
-
-
-
 
 }

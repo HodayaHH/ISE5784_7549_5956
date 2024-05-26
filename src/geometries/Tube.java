@@ -12,6 +12,7 @@ public class Tube extends RadialGeometry {
 
     /**
      * Parameter constructor
+     *
      * @param radius
      * @param myRay
      */
@@ -27,11 +28,10 @@ public class Tube extends RadialGeometry {
 
         //When connecting the point to the top of the beam
         //of the axis of the cylinder makes a right angle with the axis - the point "is in front of the head of the beam"
-        if(DirectionT==0)
-        {
+        if (DirectionT == 0) {
             throw new IllegalArgumentException("An extreme case when p-p0 is orthogonal to V");
         }
-        Point center=myRay.getHead().add(myRay.getDirection().scale(DirectionT));
+        Point center = myRay.getHead().add(myRay.getDirection().scale(DirectionT));
         return p1.subtract(center).normalize();
     }
 }

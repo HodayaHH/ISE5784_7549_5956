@@ -1,5 +1,6 @@
 // Tehila Chananayev 325435956 tehila111222@gmail.com
 // Hodaya Chananayev 324857549 chahodaya1@gmail.com
+
 import static java.lang.System.out;
 
 import static primitives.Util.isZero;
@@ -8,31 +9,34 @@ import primitives.*;
 
 /**
  * Test program for the 1st stage
+ *
  * @author Dan Zilberstein
  */
 public final class Main {
 
     /**
      * Main program to tests initial functionality of the 1st stage
+     *
      * @param args irrelevant here
      */
     public static void main(String[] args) {
-        Point  p1         = new Point(1, 2, 3);
-        Point  p2         = new Point(2, 4, 6);
-        Point  p3         = new Point(2, 4, 5);
+        Point p1 = new Point(1, 2, 3);
+        Point p2 = new Point(2, 4, 6);
+        Point p3 = new Point(2, 4, 5);
 
-            Vector v1         = new Vector(1, 2, 3);
-            Vector v1Opposite = new Vector(-1, -2, -3);
-            Vector v2         = new Vector(-2, -4, -6);
-            Vector v3         = new Vector(0, 3, -2);
-            Vector v4         = new Vector(1, 2, 2);
+        Vector v1 = new Vector(1, 2, 3);
+        Vector v1Opposite = new Vector(-1, -2, -3);
+        Vector v2 = new Vector(-2, -4, -6);
+        Vector v3 = new Vector(0, 3, -2);
+        Vector v4 = new Vector(1, 2, 2);
 
         // test zero vector =====================================================
         try {
             new Vector(0, 0, 0);
             new Vector(Double3.ZERO);
             out.println("ERROR: zero vector does not throw an exception");
-        } catch (IllegalArgumentException ignore) {} catch (Exception ignore) {
+        } catch (IllegalArgumentException ignore) {
+        } catch (Exception ignore) {
             out.println("ERROR: zero vector throws wrong exception");
         }
 
@@ -44,7 +48,8 @@ public final class Main {
         try {
             p1.subtract(p1);
             out.println("ERROR: (point - itself) does not throw an exception");
-        } catch (IllegalArgumentException ignore) {} catch (Exception ignore) {
+        } catch (IllegalArgumentException ignore) {
+        } catch (Exception ignore) {
             out.println("ERROR: (point - itself) throws wrong exception");
         }
 
@@ -80,13 +85,15 @@ public final class Main {
         try {
             v1.add(v1Opposite);
             out.println("ERROR: Vector + -itself does not throw an exception");
-        } catch (IllegalArgumentException ignore) {} catch (Exception ignore) {
+        } catch (IllegalArgumentException ignore) {
+        } catch (Exception ignore) {
             out.println("ERROR: Vector + itself throws wrong exception");
         }
         try {
             v1.subtract(v1);
             out.println("ERROR: Vector - itself does not throw an exception");
-        } catch (IllegalArgumentException ignore) {} catch (Exception ignore) {
+        } catch (IllegalArgumentException ignore) {
+        } catch (Exception ignore) {
             out.println("ERROR: Vector + itself throws wrong exception");
         }
         if (!v1.add(v2).equals(v1Opposite))
@@ -104,7 +111,8 @@ public final class Main {
         try { // test zero vector
             v1.crossProduct(v2);
             out.println("ERROR: crossProduct() for parallel vectors does not throw an exception");
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         Vector vr = v1.crossProduct(v3);
         if (!isZero(vr.length() - v1.length() * v3.length()))
             out.println("ERROR: crossProduct() wrong result length");
@@ -117,12 +125,11 @@ public final class Main {
         if (!isZero(u.length() - 1))
             out.println("ERROR: the normalized vector is not a unit vector");
         try { // test that the vectors are co-lined
-
-            //??????????????????????????????
-            v.crossProduct(u); // איזו בדיקת טסט צריך לעשות??????
+            v.crossProduct(u);
 
             out.println("ERROR: the normalized vector is not parallel to the original one");
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         if (v.dotProduct(u) < 0)
             out.println("ERROR: the normalized vector is opposite to the original one");
 

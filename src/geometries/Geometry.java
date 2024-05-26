@@ -9,6 +9,7 @@ import primitives.Vector;
 public interface Geometry {
     /**
      * A function that returns normal
+     *
      * @param p1
      * @return
      */
