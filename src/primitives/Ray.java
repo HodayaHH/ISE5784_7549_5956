@@ -6,13 +6,16 @@ import java.util.Objects;
  * class representing a Ray
  */
 public class Ray {
+    // The starting point of the ray.
     final private Point head;
+    // The direction vector of the ray.
     final private Vector direction;
 
     /**
-     * Parameter constructor
-     * @param head
-     * @param direction
+     * Constructs a Ray with the specified head point and direction vector.
+     *
+     * @param head the starting point of the ray
+     * @param direction the direction vector of the ray
      */
     public Ray(Point head, Vector direction) {
         this.head = head;
@@ -32,15 +35,25 @@ public class Ray {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        return  (obj instanceof Ray other)
+        return (obj instanceof Ray other)
                 && this.head.equals(other.head)
-                && this.direction.equals (other.direction);
+                && this.direction.equals(other.direction);
     }
 
+    /**
+     * Returns the head point of the Ray.
+     *
+     * @return the head point of the Ray
+     */
     public Point getHead() {
         return head;
     }
 
+    /**
+     * Returns the direction vector of the Ray.
+     *
+     * @return the direction vector of the Ray
+     */
     public Vector getDirection() {
         return direction;
     }

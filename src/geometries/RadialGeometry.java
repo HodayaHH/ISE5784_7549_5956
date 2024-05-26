@@ -1,14 +1,16 @@
 package geometries;
 
 /**
- * An abstract class that contains a radius field
+ * An abstract class that represents geometric objects with a radius.
  */
 public abstract class RadialGeometry implements Geometry {
 
     final protected double radius;
+
     /**
-     * Parameter constructor
-     * @param radius
+     * Constructs a RadialGeometry object with the specified radius.
+     *
+     * @param radius the radius of the geometric object
      */
     protected RadialGeometry(double radius) {
         this.radius = radius;

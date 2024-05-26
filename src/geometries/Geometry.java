@@ -6,11 +6,12 @@ import primitives.Vector;
 /**
  * An interface that realizes all the geometrics
  */
-public interface Geometry {
+public interface Geometry extends Intersectable{
     /**
-     * A function that returns normal
-     * @param p1
-     * @return
+     *  computer normal
+     *
+     * @param p1 the point on the surface of the geometry where the normal is to be computed
+     * @return the normal vector at the specified point
      */
     public Vector getNormal(Point p1);
 
