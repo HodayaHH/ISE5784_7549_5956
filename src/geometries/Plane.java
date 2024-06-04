@@ -2,8 +2,10 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,6 +72,34 @@ public class Plane implements Geometry {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        return null;
+        List<Point> intersections = new ArrayList<>();
+
+        // Calculate numerator: n * (Q - P0)
+        double numerator = normal.dotProduct(point.subtract(ray.getHead()));
+
+        // Calculate denominator: n * v
+        double denominator = normal.dotProduct(ray.getDirection());
+
+        // Check if the denominator is close to zero
+        if (Util.isZero(denominator)) { // Util.isZero() is a method that checks if a value is very close to zero
+            return null; // The ray and the plane are parallel, no intersection
+        }
+
+        // Calculate t
+        //double t = numerator / denominator;
+        double t = Util.alignZero(numerator / denominator);
+
+        // Check if t is positive
+        if (t > 0) {
+            // Calculate intersection point
+            Point intersectionPoint = ray.getHead().add(ray.getDirection().scale(t));
+
+            // Add intersection point to the list
+            intersections.add(intersectionPoint);
+            return intersections;
+        }
+
+        else
+            return null;
     }
 }
