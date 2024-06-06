@@ -59,9 +59,11 @@ public class Sphere extends RadialGeometry {
         List<Point> intersections = new LinkedList<>();
 
         if(Util.alignZero(t1) > 0 )
-            intersections.add(ray.getHead().add(ray.getDirection().scale(t1)));
+        //   intersections.add(ray.getHead().add(ray.getDirection().scale(t1)));
+            intersections.add(ray.getPoint(t1));
         if(Util.alignZero(t2) > 0 )
-            intersections.add(ray.getHead().add(ray.getDirection().scale(t2)));
+       //     intersections.add(ray.getHead().add(ray.getDirection().scale(t2))); עשינו רפרקטורינג
+           intersections.add(ray.getPoint(t2));
 
         return intersections;
 
