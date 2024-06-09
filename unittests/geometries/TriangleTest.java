@@ -5,6 +5,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TriangleTest {
@@ -36,7 +38,7 @@ class TriangleTest {
                 triangle.findIntersections(rayInside).size(),
                 "There should be exactly one intersection point");
 
-        assertEquals(new Point(0.25, 0.25, 0),
+        assertEquals(List.of(new Point(0.25, 0.25, 0)),
                 triangle.findIntersections(rayInside),
                 "Intersection point is incorrect");
 

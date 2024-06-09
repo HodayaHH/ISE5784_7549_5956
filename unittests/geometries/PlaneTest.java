@@ -56,12 +56,13 @@ class PlaneTest {
 
         //Ray is not orthogonal or parallel to the plane
 
-        //TC01:One class for each ray that intersects the plane.
+
         Point p1 = new Point(0, 0, 0);
         Point p2 = new Point(1, 0, 0);
         Point p3 = new Point(0, 1, 0);
         Plane plane = new Plane(p1, p2, p3);
 
+        //TC01:One class for each ray that intersects the plane.
         Ray ray1 = new Ray(new Point(0, 1, 1), new Vector(0, 0, -1));
         final Point gp1 = new Point(0, 1, 0);
         final var exp1 = List.of(gp1);

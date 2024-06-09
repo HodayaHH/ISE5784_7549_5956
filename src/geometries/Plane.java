@@ -93,9 +93,6 @@ public class Plane implements Geometry {
         if (t > 0) {
             List<Point> intersections = new LinkedList<>();
 
-            // Calculate intersection point
-            //Point intersectionPoint = ray.getHead().add(ray.getDirection().scale(t));עשינו רפרקטורינג
-
             // Add intersection point to the list
             intersections.add(ray.getPoint(t));
             return intersections;

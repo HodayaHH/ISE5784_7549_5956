@@ -39,7 +39,8 @@ public class Tube extends RadialGeometry {
         if (DirectionT == 0) {
             throw new IllegalArgumentException("An extreme case when p-p0 is orthogonal to V");
         }
-        Point center = ray.getHead().add(ray.getDirection().scale(DirectionT));
+        // Point center = ray.getHead().add(ray.getDirection().scale(DirectionT)); עשינו ריפרקטורינג
+        Point center = ray.getPoint(DirectionT);
         return p1.subtract(center).normalize();
     }
 
