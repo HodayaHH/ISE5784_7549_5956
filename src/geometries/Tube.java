@@ -16,7 +16,7 @@ public class Tube extends RadialGeometry {
      * Parameter constructor
      *
      * @param radius the radius of the tube
-     * @param ray the ray that defines the tube
+     * @param ray    the ray that defines the tube
      */
     public Tube(double radius, Ray ray) {
         super(radius);
@@ -45,7 +45,7 @@ public class Tube extends RadialGeometry {
     }
 
     /**
-     *Finds the intersections of a given ray with the tube.
+     * Finds the intersections of a given ray with the tube.
      *
      * @param ray the ray for which we want to find intersection points with the sphere
      * @return a list of intersection points

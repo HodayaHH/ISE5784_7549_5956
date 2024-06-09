@@ -1,7 +1,5 @@
 package primitives;
 
-import java.util.Objects;
-
 /**
  * class representing a Ray
  */
@@ -14,7 +12,7 @@ public class Ray {
     /**
      * Constructs a Ray with the specified head point and direction vector.
      *
-     * @param head the starting point of the ray
+     * @param head      the starting point of the ray
      * @param direction the direction vector of the ray
      */
     public Ray(Point head, Vector direction) {
@@ -63,16 +61,15 @@ public class Ray {
      * Calculates a point on the beam at a given distance from its origin.
      *
      * @param t the distance from the beam head. can be any real number.
-     * If t is zero, the beam head is returned.
-     * If t is positive, a point is returned in the direction of the beam.
-     * If t is negative, a point is returned in the opposite direction of the beam.
+     *          If t is zero, the beam head is returned.
+     *          If t is positive, a point is returned in the direction of the beam.
+     *          If t is negative, a point is returned in the opposite direction of the beam.
      * @return the point on the beam at a given distance t from the head.
      */
-    public Point getPoint(double t)
-    {
+    public Point getPoint(double t) {
         if (Util.isZero(t))
             return head;
-      return head.add(direction.scale(t));
+        return head.add(direction.scale(t));
 
     }
 }

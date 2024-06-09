@@ -14,7 +14,7 @@ public class Cylinder extends Tube {
      * Constructs a cylinder with a specified radius, central axis, and height.
      *
      * @param radius the radius of the base of the cylinder
-     * @param ray ray the central axis of the cylinder represented by a Ray object
+     * @param ray    ray the central axis of the cylinder represented by a Ray object
      * @param height the height of the cylinder
      */
     public Cylinder(double radius, Ray ray, double height) {

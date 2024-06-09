@@ -85,7 +85,8 @@ class PlaneTest {
 
         //TC10: Ray on the plane
         Ray ray4 = new Ray(new Point(0, 0, 1), new Vector(1, -1, 0));
-        assertNull(plane.findIntersections(ray4), "Ray on the plane- Error: should return null");
+        assertNull(plane.findIntersections(ray4),
+                "Ray on the plane- Error: should return null");
 
         //TC11: Ray not on the plane
         Ray ray5 = new Ray(new Point(0, 0, 2), new Vector(1, -1, 0));

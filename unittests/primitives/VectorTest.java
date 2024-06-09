@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
+
 /**
  * Unit tests for primitives.Vector class
  */
@@ -26,9 +27,9 @@ class VectorTest {
         Vector v1Opposite = new Vector(-1, -2, -3);
         Vector v2 = new Vector(-2, -4, -6);
         Vector v3 = new Vector(2, 3, 4);
-        Vector v4= new Vector(3, 5, 7);
+        Vector v4 = new Vector(3, 5, 7);
 
-                // ============ Equivalence Partitions Tests ==============
+        // ============ Equivalence Partitions Tests ==============
         //TC01:Addition of opposite vectors
         assertEquals(v1Opposite,
                 v1.add(v2),
@@ -50,7 +51,7 @@ class VectorTest {
     void testScale() {
         // ============ Equivalence Partitions Tests ==============
         Vector v = new Vector(1, 2, 3);
-        Vector v1 =new Vector(2, 4, 6);
+        Vector v1 = new Vector(2, 4, 6);
         Vector v2 = new Vector(-1, -2, -3);
 
         //TC01:Multiply by a positive number
