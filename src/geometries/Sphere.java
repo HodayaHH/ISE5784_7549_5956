@@ -28,7 +28,7 @@ public class Sphere extends RadialGeometry {
      * Computes the normal vector to the surface of the sphere at a given point.
      *
      * @param p1 point on the surface of the sphere
-     * @return  the normal vector at the specified point
+     * @return the normal vector at the specified point
      */
     @Override
     public Vector getNormal(Point p1) {
@@ -44,26 +44,40 @@ public class Sphere extends RadialGeometry {
      */
     @Override
     public List<Point> findIntersections(Ray ray) {
-        Vector u=center.subtract(ray.getHead());
-        double tm=ray.getDirection().dotProduct(u);
-        double dSquared =u.lengthSquared() - tm * tm;
-        if (Util.alignZero(dSquared - this.radius * this.radius) >= 0)
-            return null;
+        // Vector from the ray's origin to the center of the sphere
+        Vector u = center.subtract(ray.getHead());
 
-        double th =Util.alignZero(Math.sqrt(this.radius * this.radius - dSquared));
+        // Projection of vector u onto the ray's direction vector
+        double tm = ray.getDirection().dotProduct(u);
+
+        // Squared distance from the sphere's center to the ray
+        double dSquared = u.lengthSquared() - tm * tm;
+
+        // Check if the ray misses the sphere
+        if (Util.alignZero(dSquared - this.radius * this.radius) >= 0)
+            return null;// No intersection points
+
+        // Distance from the projection point to the intersection points
+        double th = Util.alignZero(Math.sqrt(this.radius * this.radius - dSquared));
+
+        // t1 and t2 are the distances from the ray's origin to the intersection points
         double t1 = tm + th;
         double t2 = tm - th;
 
+        // Check if both intersection points are behind the ray's origin
         if (Util.alignZero(t1) <= 0 && Util.alignZero(t2) <= 0)
-            return null;
+            return null;// No intersection points in the positive direction of the ray
+
+        // List to store intersection points
         List<Point> intersections = new LinkedList<>();
 
-        if(Util.alignZero(t1) > 0 )
+        // Add the intersection points to the list if they are in front of the ray's origin
+        if (Util.alignZero(t1) > 0)
             intersections.add(ray.getPoint(t1));
-        if(Util.alignZero(t2) > 0 )
-           intersections.add(ray.getPoint(t2));
+        if (Util.alignZero(t2) > 0)
+            intersections.add(ray.getPoint(t2));
 
-        return intersections;
+        return intersections;// Return the list of intersection points
 
     }
 }

@@ -5,7 +5,6 @@ import primitives.Ray;
 import primitives.Util;
 import primitives.Vector;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Plane implements Geometry {
     /**
      * Constructs a plane given a point on the plane and a normal vector to the plane.
      *
-     * @param point1  a point on the plane
+     * @param point1 a point on the plane
      * @param normal the normal vector to the plane will be normalized and stored
      */
     public Plane(Point point1, Vector normal) {
@@ -44,8 +43,8 @@ public class Plane implements Geometry {
 
     /**
      * Returns the normal vector of the plane.
-     *For a plane, the normal vector is constant everywhere, so the input point is not used
-     *in the computation. The method simply returns the precomputed normal vector of the plane.
+     * For a plane, the normal vector is constant everywhere, so the input point is not used
+     * in the computation. The method simply returns the precomputed normal vector of the plane.
      *
      * @param p1 a point on the plane (not used in the computation)
      * @return the normal vector of the plane
@@ -56,8 +55,8 @@ public class Plane implements Geometry {
     }
 
     /**
-     *Returns the normal vector of the plane.
-     *This method simply returns the precomputed normal vector of the plane.
+     * Returns the normal vector of the plane.
+     * This method simply returns the precomputed normal vector of the plane.
      *
      * @return the normal vector of the plane
      */
@@ -66,7 +65,7 @@ public class Plane implements Geometry {
     }
 
     /**
-     *Finds the intersections of a given ray with the plane.
+     * Finds the intersections of a given ray with the plane.
      *
      * @param ray the ray for which we want to find intersection points with the sphere
      * @return a list of intersection points
@@ -96,9 +95,7 @@ public class Plane implements Geometry {
             // Add intersection point to the list
             intersections.add(ray.getPoint(t));
             return intersections;
-        }
-
-        else
+        } else
             return null;
     }
 }

@@ -64,6 +64,7 @@ public class Vector extends Point {
     public double dotProduct(Vector v1) {
         return this.xyz.d1 * v1.xyz.d1 + this.xyz.d2 * v1.xyz.d2 + this.xyz.d3 * v1.xyz.d3;
     }
+
     /**
      * Calculates the cross product of this vector and another vector.
      *

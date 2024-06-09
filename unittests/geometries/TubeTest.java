@@ -6,6 +6,7 @@ import primitives.Ray;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Unit tests for geometries.Tube class
  */
@@ -18,7 +19,7 @@ class TubeTest {
         Tube tube = new Tube(1, ray);
         Point p = new Point(1, 1, 0); // A point on the area of the Tube
         Vector normal = tube.getNormal(p);
-        Vector v1= new Vector(1, 0, 0);
+        Vector v1 = new Vector(1, 0, 0);
         //TC01:Checking if the computer calculates the normal well
         assertEquals(v1,
                 normal,
