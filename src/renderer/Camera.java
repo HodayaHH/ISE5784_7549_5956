@@ -143,6 +143,8 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
             camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
             return camera.clone();
         }
+
+
     }
 
     @Override

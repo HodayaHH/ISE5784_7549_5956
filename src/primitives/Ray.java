@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.List;
+
 /**
  * class representing a Ray
  */
@@ -71,5 +73,35 @@ public class Ray {
             return head;
         return head.add(direction.scale(t));
 
+    }
+    /**
+     * Finds the closest point to the head of the ray from a list of points.
+     * Uses squared distances for efficiency.
+     *
+     * @param points The list of points to search.
+     * @return The closest point to the head of the ray, or null if the list is empty or null.
+     */
+    public Point findClosestPoint(List<Point> points) {
+        if (points == null || points.isEmpty()) {
+            return null;
+        }
+
+        // Initialize with the first point in the list
+        Point closestPoint = points.get(0);
+        double closestDistanceSquared = closestPoint.distanceSquared(head);
+
+        // Iterate through the rest of the points to find the closest one
+        for (int i = 1; i < points.size(); i++) {
+            Point point = points.get(i);
+            double distanceSquared = point.distanceSquared(head);
+
+            // Update closestPoint if we find a closer point
+            if (distanceSquared < closestDistanceSquared) {
+                closestPoint = point;
+                closestDistanceSquared = distanceSquared;
+            }
+        }
+        // Return the closest point found
+        return closestPoint;
     }
 }
