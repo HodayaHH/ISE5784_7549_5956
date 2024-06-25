@@ -18,9 +18,9 @@ public class RenderTests {
     /** Camera builder of the tests */
     private final Camera.Builder camera = Camera.getBuilder()
             .setRayTracer(new SimpleRayTracer(scene))
-            .setLocation(Point.ZERO).setDirection(new Point(0, 0, -1), Vector.Y)
-            .setVpDistance(100)
-            .setVpSize(500, 500);
+            .setLocation(Point.ZERO).setDirection(new Vector(0, 0, -1), new Vector(0, 1, 0))
+            .setViewPlaneDistance(100)
+            .setViewPlaneSize(500, 500);
 
     /** Produce a scene with basic 3D model and render it into a png image with a
      * grid */

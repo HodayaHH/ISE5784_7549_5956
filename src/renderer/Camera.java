@@ -2,7 +2,6 @@ package renderer;
 
 import primitives.*;
 
-import java.security.cert.CertPathBuilder;
 import java.util.MissingResourceException;
 
 public class Camera implements Cloneable{
@@ -15,6 +14,8 @@ private double viewPlaneWidth = 0.0;// Width of the view plane
 private double viewPlaneHeight = 0.0;// Height of the view plane
 private double viewPlaneDistance = 0.0;// Distance between the camera and the view plane
 
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracer;
     /**
      * Empty constructor
      */
@@ -57,6 +58,53 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
         return new Ray(location, vij);
     }
 
+    private void castRay(int nX, int nY, int j, int i) {
+        Ray ray = constructRay(nX, nY, j, i);
+        Color color = rayTracer.traceRay(ray);
+        imageWriter.writePixel(j, i, color);
+    }
+
+    public Camera renderImage() {
+        if (imageWriter == null || rayTracer == null) {
+            throw new MissingResourceException("ImageWriter or RayTracer not set", Camera.class.getName(), "required field");
+        }
+
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++) {
+                castRay(nX, nY, j, i);
+            }
+        }
+        return this;
+    }
+
+
+    public Camera printGrid(int interval, Color color) {
+        if (imageWriter == null) {
+            throw new MissingResourceException("ImageWriter not set", Camera.class.getName(), "required field");
+        }
+
+        int nX = imageWriter.getNx();
+        int nY = imageWriter.getNy();
+
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++) {
+                if (i % interval == 0 || j % interval == 0) {
+                    imageWriter.writePixel(j, i, color);
+                }
+            }
+        }
+        return this;
+    }
+    public void writeToImage() {
+        if (imageWriter == null) {
+            throw new MissingResourceException("ImageWriter not set", Camera.class.getName(), "required field");
+        }
+
+        imageWriter.writeToImage();
+    }
 
     /**
      *  internal class
@@ -131,6 +179,25 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
         }
 
         /**
+         *
+         * @param baseRender
+         * @return
+         */
+        public Builder setImageWriter(ImageWriter baseRender) {
+            camera.imageWriter = baseRender;
+            return this;
+        }
+
+        /**
+         *
+         * @param simpleRayTracer
+         * @return
+         */
+        public Builder setRayTracer(SimpleRayTracer simpleRayTracer) {
+            camera.rayTracer = simpleRayTracer;
+            return this;
+        }
+        /**
          * Builds and returns a Camera object.
          *
          * @return The built Camera object.
@@ -140,11 +207,14 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
                     camera.viewPlaneWidth == 0 || camera.viewPlaneHeight == 0 || camera.viewPlaneDistance == 0) {
                 throw new MissingResourceException("Missing rendering data", Camera.class.getName(), "required field");
             }
+            // Ensure ImageWriter and RayTracer are set
+            if (camera.imageWriter == null || camera.rayTracer == null) {
+                throw new MissingResourceException("ImageWriter or RayTracer not set", Camera.Builder.class.getName(), "required field");
+            }
+
             camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
             return camera.clone();
         }
-
-
     }
 
     @Override

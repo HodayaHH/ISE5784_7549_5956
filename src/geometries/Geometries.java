@@ -19,7 +19,7 @@ public class Geometries implements Intersectable {
     }
 
     // Private method to add multiple geometric objects to the list
-    private void add(Intersectable... geometries) {
+    public void add(Intersectable... geometries) {
 
         Collections.addAll(this.geometries, geometries);// Add all geometries to the list
     }
