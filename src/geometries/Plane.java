@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * class representing a Plane
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     final private Point point;
     final private Vector normal;
 
@@ -71,7 +71,7 @@ public class Plane implements Geometry {
      * @return a list of intersection points
      */
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
         // Calculate numerator: n * (Q - P0)
         double numerator = normal.dotProduct(point.subtract(ray.getHead()));
@@ -90,10 +90,10 @@ public class Plane implements Geometry {
 
         // Check if t is positive
         if (t > 0) {
-            List<Point> intersections = new LinkedList<>();
+            List<GeoPoint> intersections = new LinkedList<>();
 
             // Add intersection point to the list
-            intersections.add(ray.getPoint(t));
+            intersections.add(new GeoPoint(this,ray.getPoint(t)));
             return intersections;
         } else
             return null;

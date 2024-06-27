@@ -25,14 +25,14 @@ public class Triangle extends Polygon {
      * @return a list of intersection points if they exist, otherwise null
      */
     @Override
-    public List<Point> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         // Find the intersection points of the ray with the plane of the triangle
-        List<Point> planeIntersections = plane.findIntersections(ray);
+        List<GeoPoint> planeIntersections = plane.findGeoIntersectionsHelper(ray);
         if (planeIntersections == null) {
             return null;// No intersection points with the plane, hence no intersection with the triangle
         }
         // Intersection point with the plane
-        Point p = planeIntersections.get(0);
+        GeoPoint p = planeIntersections.get(0);
 
         Point p0 = ray.getHead();
         Vector v = ray.getDirection();

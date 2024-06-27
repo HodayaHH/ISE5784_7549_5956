@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import primitives.*;
 import geometries.*;
+import scene.Scene;
 //import scene.Scene;
 
 /**
@@ -21,11 +22,16 @@ public class IntegrationTests {
         Point location = new Point(0, 0, 0);
         Vector to = new Vector(0, 0, -1);
         Vector up = new Vector(0, 1, 0);
+        ImageWriter imageWriter = new ImageWriter("test", 3, 3);
+        RayTracerBase rayTracer = new SimpleRayTracer(new Scene("Test Scene"));
+
         return Camera.getBuilder()
                 .setLocation(location)
                 .setDirection(to, up)
                 .setViewPlaneSize(3, 3)
                 .setViewPlaneDistance(1)
+                .setImageWriter(imageWriter)
+                .setRayTracer((SimpleRayTracer) rayTracer)
                 .build();
     }
     /**
