@@ -6,10 +6,10 @@ import primitives.Double3;
  * The AmbientLight class represents the ambient light in a scene.
  * Ambient light is a fixed-intensity and fixed-color light that affects all objects in the scene equally.
  */
-public class AmbientLight {
+public class AmbientLight extends Light {
 
     // The intensity of the ambient light.
-    final private Color intensity;
+   // final private Color intensity;
 
     // A constant representing no ambient light.
     static public AmbientLight NONE = new AmbientLight(Color.BLACK, Double3.ZERO);
@@ -21,6 +21,7 @@ public class AmbientLight {
      * @param KA the attenuation factor as a Double3.
      */
     public AmbientLight(Color IA, Double3 KA) {
+        super(IA);
         this.intensity = IA.scale(KA);
     }
 
@@ -30,15 +31,10 @@ public class AmbientLight {
      * @param KA the attenuation factor as a double.
      */
     public AmbientLight(Color IA, double KA, Color intensity) {
+        super(IA);
         this.intensity = IA.scale(KA);
     }
 
-    /**
-     * Getter for the intensity of the ambient light.
-     * @return the intensity of the ambient light.
-     */
-    public Color getIntensity() {
-        return intensity;
-    }
+
 }
 

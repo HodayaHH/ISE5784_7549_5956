@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -48,16 +49,18 @@ public class Triangle extends Polygon {
         Vector n3 = v3.crossProduct(v1).normalize();
 
         // Check if all normal vectors point in the same direction
-        double d1 = v.dotProduct(n1);
-        double d2 = v.dotProduct(n2);
-        double d3 = v.dotProduct(n3);
+        double d1 = Util.alignZero(v.dotProduct(n1));
+        double d2 = Util.alignZero(v.dotProduct(n2));
+        double d3 = Util.alignZero(v.dotProduct(n3));
 
-        // If all the scalar products have the same sign (all positive or all negative),
+        // If not all the scalar products have the same sign (all positive or all negative),
         // the intersection point is inside the triangle
-        if ((d1 > 0 && d2 > 0 && d3 > 0) || (d1 < 0 && d2 < 0 && d3 < 0)) {
-            return List.of(p);
+        if (!(d1 > 0 && d2 > 0 && d3 > 0) && !(d1 < 0 && d2 < 0 && d3 < 0)) {
+            return null;
         }
-        // Otherwise, the intersection point is outside the triangle
-        return null;
+
+        List<GeoPoint> geoPointsTriangle = new LinkedList<>();
+        geoPointsTriangle.add(new GeoPoint(this, planeIntersections.get(0).point));
+        return geoPointsTriangle;
     }
 }
