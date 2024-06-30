@@ -2,6 +2,7 @@ package lighting;
 
 import primitives.Color;
 import primitives.*;
+
 /**
  * Interface representing a light source in the scene.
  * Provides methods to get the intensity and direction of the light at a specific point.

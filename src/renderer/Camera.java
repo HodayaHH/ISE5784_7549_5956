@@ -4,18 +4,19 @@ import primitives.*;
 
 import java.util.MissingResourceException;
 
-public class Camera implements Cloneable{
-private  Vector vUp;// Vector representing the up direction of the camera
-private  Vector vTo;// Vector representing the forward direction of the camera
-private  Vector vRight;// Vector representing the right direction of the camera
-private  Point location;// Location of the camera
+public class Camera implements Cloneable {
+    private Vector vUp;// Vector representing the up direction of the camera
+    private Vector vTo;// Vector representing the forward direction of the camera
+    private Vector vRight;// Vector representing the right direction of the camera
+    private Point location;// Location of the camera
 
-private double viewPlaneWidth = 0.0;// Width of the view plane
-private double viewPlaneHeight = 0.0;// Height of the view plane
-private double viewPlaneDistance = 0.0;// Distance between the camera and the view plane
+    private double viewPlaneWidth = 0.0;// Width of the view plane
+    private double viewPlaneHeight = 0.0;// Height of the view plane
+    private double viewPlaneDistance = 0.0;// Distance between the camera and the view plane
 
     private ImageWriter imageWriter;// Object responsible for writing images
     private RayTracerBase rayTracer;
+
     /**
      * Empty constructor
      */
@@ -38,7 +39,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
     public Ray constructRay(int nX, int nY, int j, int i) {
 
         // Calculate the image center
-       Point pc = location.add(vTo.scale(viewPlaneDistance));
+        Point pc = location.add(vTo.scale(viewPlaneDistance));
 
         // Calculate the ratios
         double Ry = viewPlaneHeight / nY;
@@ -57,6 +58,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
 
         return new Ray(location, vij);
     }
+
     /**
      * Casts a ray through a specific pixel and writes the resulting color to the image.
      *
@@ -70,6 +72,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
         Color color = rayTracer.traceRay(ray);
         imageWriter.writePixel(j, i, color);
     }
+
     /**
      * Renders the image by tracing rays through each pixel.
      *
@@ -117,6 +120,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
         }
         return this;
     }
+
     /**
      * Writes the image to a file.
      */
@@ -129,7 +133,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
     }
 
     /**
-     *  internal class
+     * internal class
      */
     public static class Builder {
         private final Camera camera;
@@ -161,7 +165,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
          * @return The Builder instance.
          */
         public Builder setDirection(Vector to, Vector up) {
-            if (to == null || up == null || !Util.isZero(to.dotProduct(up)) ) {
+            if (to == null || up == null || !Util.isZero(to.dotProduct(up))) {
                 throw new IllegalArgumentException("Invalid direction vectors.");
             }
             camera.vTo = to.normalize();
@@ -222,6 +226,7 @@ private double viewPlaneDistance = 0.0;// Distance between the camera and the vi
             camera.rayTracer = simpleRayTracer;
             return this;
         }
+
         /**
          * Builds and returns a Camera object.
          *

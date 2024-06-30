@@ -3,12 +3,15 @@ package renderer;
 import primitives.Color;
 import primitives.Ray;
 import scene.Scene;
+
 /**
  * Abstract base class for ray tracing algorithms.
  * Provides the framework for tracing rays in a given scene and returning the resulting color.
  */
 public abstract class RayTracerBase {
-    /** The scene in which the ray tracing takes place */
+    /**
+     * The scene in which the ray tracing takes place
+     */
     protected Scene scene;
 
     /**

@@ -22,6 +22,7 @@ public class DirectionalLight extends Light implements LightSource {
         super(intensity);
         this.direction = direction.normalize();//++נרמלתי
     }
+
     /**
      * Returns the light intensity at a given point.
      * For directional light, the intensity is constant throughout the scene.
@@ -33,6 +34,7 @@ public class DirectionalLight extends Light implements LightSource {
     public Color getIntensity(Point p) {
         return getIntensity();// Return the constant intensity.
     }
+
     /**
      * Returns the direction of the light.
      * For directional light, this is the same regardless of the point in the scene.

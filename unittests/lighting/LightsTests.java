@@ -194,4 +194,34 @@ public class LightsTests {
                 .writeToImage();
     }
 
+    /** Produce a picture of a sphere lighted by multiple light sources */
+    @Test
+    public void sphereMultipleLights() {
+        scene1.geometries.add(sphere);// Adding the ball to the first scene
+        scene1.lights.add(new DirectionalLight(new Color(500, 300, 200), new Vector(-1, -1, -1)));
+        scene1.lights.add(new PointLight(new Color(400, 200, 300), new Point(-100, 100, 50))
+                .setKl(0.001).setKq(0.0002));
+        scene1.lights.add(new SpotLight(new Color(300, 400, 200), new Point(50, -50, 50), new Vector(1, 1, -2))
+                .setKl(0.001).setKq(0.0001));
+
+        camera1.setImageWriter(new ImageWriter("lightSphereMultiple", 500, 500))
+                .build()
+                .renderImage()
+                .writeToImage();// Creating the image and writing it to the file
+    }
+    /** Produce a picture of two triangles lighted by multiple light sources */
+    @Test
+    public void trianglesMultipleLights() {
+        scene2.geometries.add(triangle1, triangle2);// Adding the triangles to the second scene
+        scene2.lights.add(new DirectionalLight(new Color(500, 400, 300), new Vector(1, -1, -1)));
+        scene2.lights.add(new PointLight(new Color(200, 300, 500), new Point(100, -100, 50))
+                .setKl(0.001).setKq(0.0002));
+        scene2.lights.add(new SpotLight(new Color(300, 200, 400), new Point(-30, 50, -50), new Vector(-1, -1, -2))
+                .setKl(0.001).setKq(0.0001));
+
+        camera2.setImageWriter(new ImageWriter("lightTrianglesMultiple", 500, 500))
+                .build()
+                .renderImage()
+                .writeToImage();// Creating the image and writing it to the file
+    }
 }
