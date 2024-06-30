@@ -2,7 +2,11 @@ package scene;
 
 import geometries.Geometries;
 import lighting.AmbientLight;
+import lighting.LightSource;
 import primitives.Color;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Scene {
     // Name of the scene
@@ -17,6 +21,16 @@ public class Scene {
     // Collection of geometries in the scene
     public Geometries geometries= new Geometries() ;
 
+    public List<LightSource> lights = new LinkedList<>();
+
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
+        return this;
+    }
+
+    public List<LightSource> getLights() {                   //**************  הוספתי
+        return lights;
+    }
 
     /**
      * Constructor to create a scene with a given name.
@@ -71,4 +85,6 @@ public class Scene {
         this.geometries = geometries;
         return this;
     }
+
+
 }
