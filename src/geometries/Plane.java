@@ -71,7 +71,7 @@ public class Plane extends Geometry {
      * @return a list of intersection points
      */
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
 
         // Calculate numerator: n * (Q - P0)
         double numerator = normal.dotProduct(point.subtract(ray.getHead()));
@@ -93,7 +93,7 @@ public class Plane extends Geometry {
             List<GeoPoint> intersections = new LinkedList<>();
 
             // Add intersection point to the list
-            intersections.add(new GeoPoint(this,ray.getPoint(t)));
+            intersections.add(new GeoPoint(this, ray.getPoint(t)));
             return intersections;
         } else
             return null;

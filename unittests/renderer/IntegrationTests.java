@@ -1,11 +1,16 @@
 package renderer;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import geometries.Intersectable;
+import geometries.Plane;
+import geometries.Sphere;
+import geometries.Triangle;
 import org.junit.jupiter.api.Test;
-
-import primitives.*;
-import geometries.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Vector;
 import scene.Scene;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 //import scene.Scene;
 
 /**
@@ -34,13 +39,14 @@ public class IntegrationTests {
                 .setRayTracer((SimpleRayTracer) rayTracer)
                 .build();
     }
+
     /**
      * Counts intersections between rays from the camera and a given geometry.
      *
-     * @param camera The camera generating rays.
+     * @param camera   The camera generating rays.
      * @param geometry The geometry to test for intersections.
-     * @param nX Number of pixels in the X direction.
-     * @param nY Number of pixels in the Y direction.
+     * @param nX       Number of pixels in the X direction.
+     * @param nY       Number of pixels in the Y direction.
      * @return The total count of intersections found.
      */
     private int countIntersections(Camera camera, Intersectable geometry, int nX, int nY) {
@@ -55,6 +61,7 @@ public class IntegrationTests {
         }
         return count;
     }
+
     /**
      * Tests intersection of rays from the camera with a sphere.
      */
@@ -66,6 +73,7 @@ public class IntegrationTests {
         int count = countIntersections(camera, sphere, 3, 3);
         assertEquals(2, count, "Expected 2 intersections with the sphere.");
     }
+
     /**
      * Tests intersection of rays from the camera with a plane.
      */
@@ -77,6 +85,7 @@ public class IntegrationTests {
         int count = countIntersections(camera, plane, 3, 3);
         assertEquals(9, count, "Expected 9 intersections with the plane.");
     }
+
     /**
      * Tests intersection of rays from the camera with a triangle.
      */

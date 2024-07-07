@@ -1,14 +1,15 @@
 package renderer;
 
+import geometries.Intersectable.GeoPoint;
 import lighting.LightSource;
-import primitives.Color;
 import primitives.*;
 import scene.Scene;
-import geometries.Intersectable.GeoPoint;
 
 import java.util.List;
 
 public class SimpleRayTracer extends RayTracerBase {
+    private static final double EPS = 0.1;
+
     /**
      * Constructor for SimpleRayTracer.
      *
@@ -45,7 +46,6 @@ public class SimpleRayTracer extends RayTracerBase {
                 .add(calcLocalEffects(geoPoint, ray));
     }
 
-
     /**
      * Calculate the local effects of lighting on a point.
      *
@@ -66,7 +66,7 @@ public class SimpleRayTracer extends RayTracerBase {
             Vector l = lightSource.getL(gp.point).normalize();
             double nl = Util.alignZero(n.dotProduct(l));
 
-            if (nl * nv > 0 && unshaded(gp, lightSource, l, n, nl)) {   //**
+            if (nl * nv > 0 && unshaded(gp, lightSource, l, n, nl)) {
                 Color iL = lightSource.getIntensity(gp.point);
                 color = color.add(
                         iL.scale(calcDiffusive(material, nl)
@@ -112,9 +112,6 @@ public class SimpleRayTracer extends RayTracerBase {
         return material.Kd.scale(Math.abs(nl));
     }
 
-
-    private static final double EPS = 0.1;
-
     /**
      * Check if a point is unshaded by any objects.
      *
@@ -130,11 +127,19 @@ public class SimpleRayTracer extends RayTracerBase {
         Vector epsVector = n.scale(nl < 0 ? EPS : -EPS);
         Point point = gp.point.add(epsVector);
         Ray ray = new Ray(point, lightDirection);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersectionsHelper(ray);
-        return intersections == null;
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
+        if (intersections==null)return true;
+
+        double lightDistance = light.getDistance(point);
+
+        for (GeoPoint intersection : intersections) {
+            if (intersection.point.distance(point) <= lightDistance) {
+                return false; // Intersection found before light source, hence in shadow
+            }
+        }
+        return true; // No blocking intersection, hence no shadow
 
 
-//        if (intersections==null)return true;
 //        else{
 //            for (GeoPoint intersection : intersections) {
 //                if (point.distance(ray.getHead())>light.getDistance(point))

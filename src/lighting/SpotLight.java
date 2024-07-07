@@ -16,17 +16,6 @@ public class SpotLight extends PointLight {
     private double narrowBeamAngle = 1;
 
     /**
-     * Sets the narrow beam angle in degrees.
-     *
-     * @param angleDegrees The angle of the narrow beam in degrees.
-     * @return The current instance of SpotLight (for method chaining).
-     */
-    public SpotLight setNarrowBeam(double angleDegrees) {
-        this.narrowBeamAngle = angleDegrees;
-        return this;
-    }
-
-    /**
      * Constructor that takes the light's color intensity, position, and direction.
      *
      * @param intensity The color intensity of the light.
@@ -36,6 +25,17 @@ public class SpotLight extends PointLight {
     public SpotLight(Color intensity, Point position, Vector direction) {
         super(intensity, position);
         this.direction = direction.normalize();// Normalize the direction vector
+    }
+
+    /**
+     * Sets the narrow beam angle in degrees.
+     *
+     * @param angleDegrees The angle of the narrow beam in degrees.
+     * @return The current instance of SpotLight (for method chaining).
+     */
+    public SpotLight setNarrowBeam(double angleDegrees) {
+        this.narrowBeamAngle = angleDegrees;
+        return this;
     }
 
     /**

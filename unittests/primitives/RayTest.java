@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class RayTest {
 
@@ -47,12 +48,12 @@ class RayTest {
         // ============ Equivalence Partitions Tests ==============
         //TC01: Test with a balanced list - middle point should be closest to ray head
 
-        List<Point> balancedList =new LinkedList<>();
+        List<Point> balancedList = new LinkedList<>();
         balancedList.add(b);
         balancedList.add(a);
         balancedList.add(c);
 
-        assertEquals(a, ray.findClosestPoint(balancedList),"middle point should be closest to ray head-Wrong point");
+        assertEquals(a, ray.findClosestPoint(balancedList), "middle point should be closest to ray head-Wrong point");
 
         // =============== Boundary Values Tests ==================
         //TC10: Test with an empty list - should return null
@@ -60,18 +61,18 @@ class RayTest {
         assertNull(ray.findClosestPoint(emptyList));
 
         //TC11: Test with list where first point is closest to ray head
-        List<Point> firstClosestList =  new LinkedList<>();
+        List<Point> firstClosestList = new LinkedList<>();
         firstClosestList.add(a);
         firstClosestList.add(b);
         firstClosestList.add(c);
-        assertEquals(a, ray.findClosestPoint(firstClosestList),"first point is closest to ray head-Wrong point");
+        assertEquals(a, ray.findClosestPoint(firstClosestList), "first point is closest to ray head-Wrong point");
 
         //TC12: Test with list where last point is closest to ray head
         List<Point> lastClosestList = new LinkedList<>();
         lastClosestList.add(c);
         lastClosestList.add(b);
         lastClosestList.add(a);
-        assertEquals(a, ray.findClosestPoint(lastClosestList),"last point is closest to ray head-Wrong point");
+        assertEquals(a, ray.findClosestPoint(lastClosestList), "last point is closest to ray head-Wrong point");
     }
 
 }

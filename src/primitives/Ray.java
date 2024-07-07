@@ -1,6 +1,7 @@
 package primitives;
 
 import geometries.Intersectable.GeoPoint;
+
 import java.util.List;
 
 
@@ -99,7 +100,7 @@ public class Ray {
         GeoPoint closestPoint = points.get(0);
         double closestDistanceSquared = closestPoint.point.distanceSquared(head);
 
-       //Iterate through the rest of the points to find the closest one
+        //Iterate through the rest of the points to find the closest one
         for (int i = 1; i < points.size(); i++) {
             GeoPoint point = points.get(i);
             double distanceSquared = point.point.distanceSquared(head);

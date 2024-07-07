@@ -1,6 +1,9 @@
 package geometries;
 
-import primitives.*;
+import primitives.Point;
+import primitives.Ray;
+import primitives.Util;
+import primitives.Vector;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +29,7 @@ public class Triangle extends Polygon {
      * @return a list of intersection points if they exist, otherwise null
      */
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         // Find the intersection points of the ray with the plane of the triangle
         List<GeoPoint> planeIntersections = plane.findGeoIntersectionsHelper(ray);
         if (planeIntersections == null) {

@@ -1,9 +1,10 @@
 package geometries;
 
-import primitives.Point;
 import primitives.Ray;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Geometries extends Intersectable {
     // List to store all the geometric objects
@@ -31,7 +32,7 @@ public class Geometries extends Intersectable {
      * @return a list of intersection points if they exist, otherwise null
      */
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         // List to store intersection points
         List<GeoPoint> intersectionPoints = new LinkedList<>();
         // Iterate through all geometries and find intersections with the ray

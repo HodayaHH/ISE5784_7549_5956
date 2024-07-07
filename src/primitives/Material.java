@@ -1,13 +1,15 @@
 package primitives;
+
 /**
  * The Material class represents the material properties of a geometry in the scene.
  * It includes the coefficients for specular reflection (Ks), diffuse reflection (Kd),
  * and the shininess factor for specular highlights (nShininess).
  */
 public class Material {
-    public Double3 Ks =Double3.ZERO;// Specular reflection coefficient
-    public Double3 Kd =Double3.ZERO;// Diffuse reflection coefficient
-    public int nShininess=0;// Shininess factor for specular highlights
+    public Double3 Ks = Double3.ZERO;// Specular reflection coefficient
+    public Double3 Kd = Double3.ZERO;// Diffuse reflection coefficient
+    public int nShininess = 0;// Shininess factor for specular highlights
+
     /**
      * Sets the specular reflection coefficient (Ks).
      *
@@ -18,6 +20,7 @@ public class Material {
         this.Ks = ks;
         return this;
     }
+
     /**
      * Sets the diffuse reflection coefficient (Kd).
      *
@@ -39,6 +42,7 @@ public class Material {
         this.nShininess = nShininess;
         return this;
     }
+
     /**
      * Sets the specular reflection coefficient (Ks) using a double value.
      * Converts the double value to a Double3 object.
@@ -50,6 +54,7 @@ public class Material {
         this.Ks = new Double3(Ks);
         return this;
     }
+
     /**
      * Sets the diffuse reflection coefficient (Kd) using a double value.
      * Converts the double value to a Double3 object.

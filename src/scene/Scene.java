@@ -24,14 +24,12 @@ public class Scene {
     public List<LightSource> lights = new LinkedList<>();
 
     /**
-     * Sets the list of light sources in the scene.
+     * Constructor to create a scene with a given name.
      *
-     * @param lights The list of light sources to set.
-     * @return The current Scene object (for method chaining).
+     * @param sceneName The name of the scene.
      */
-    public Scene setLights(List<LightSource> lights) {
-        this.lights = lights;
-        return this;
+    public Scene(String sceneName) {
+        this.sceneName = sceneName;
     }
 
     /**
@@ -44,14 +42,15 @@ public class Scene {
     }
 
     /**
-     * Constructor to create a scene with a given name.
+     * Sets the list of light sources in the scene.
      *
-     * @param sceneName The name of the scene.
+     * @param lights The list of light sources to set.
+     * @return The current Scene object (for method chaining).
      */
-    public Scene(String sceneName) {
-        this.sceneName = sceneName;
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
+        return this;
     }
-
 
     /**
      * Sets the background color of the scene.

@@ -41,7 +41,7 @@ public class Camera implements Cloneable {
         // Calculate the image center
         Point pc = location.add(vTo.scale(viewPlaneDistance));
 
-        // Calculate the ratios
+        // Calculate size of the pixels
         double Ry = viewPlaneHeight / nY;
         double Rx = viewPlaneWidth / nX;
 
@@ -51,8 +51,9 @@ public class Camera implements Cloneable {
 
 
         Point pij = pc;
-        if (xj != 0) pij = pij.add(vRight.scale(xj));
-        if (yi != 0) pij = pij.add(vUp.scale(yi));
+        //at first, we will not create the 0 vector with the help of a test
+        if (!Util.isZero(xj)) pij = pij.add(vRight.scale(xj));
+        if (!Util.isZero(yi)) pij = pij.add(vUp.scale(yi));
 
         Vector vij = pij.subtract(location).normalize();
 
@@ -130,6 +131,15 @@ public class Camera implements Cloneable {
         }
 
         imageWriter.writeToImage();
+    }
+
+    @Override
+    protected Camera clone() {
+        try {
+            return (Camera) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Cloning not supported", e);
+        }
     }
 
     /**
@@ -244,15 +254,6 @@ public class Camera implements Cloneable {
 
             camera.vRight = camera.vTo.crossProduct(camera.vUp).normalize();
             return camera.clone();
-        }
-    }
-
-    @Override
-    protected Camera clone() {
-        try {
-            return (Camera) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException("Cloning not supported", e);
         }
     }
 }

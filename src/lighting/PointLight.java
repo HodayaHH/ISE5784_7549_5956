@@ -16,6 +16,17 @@ public class PointLight extends Light implements LightSource {
     private double kq = 0.0;// Quadratic attenuation coefficient
 
     /**
+     * Constructor that takes the light's color intensity and position.
+     *
+     * @param intensity The color intensity of the light.
+     * @param position  The position of the light in space.
+     */
+    public PointLight(Color intensity, Point position) {
+        super(intensity);
+        this.position = position;
+    }
+
+    /**
      * Sets the constant attenuation coefficient.
      *
      * @param kc The constant attenuation coefficient.
@@ -49,17 +60,6 @@ public class PointLight extends Light implements LightSource {
     }
 
     /**
-     * Constructor that takes the light's color intensity and position.
-     *
-     * @param intensity The color intensity of the light.
-     * @param position  The position of the light in space.
-     */
-    public PointLight(Color intensity, Point position) {
-        super(intensity);
-        this.position = position;
-    }
-
-    /**
      * Gets the intensity of the light at a given point.
      * The intensity decreases with distance according to the attenuation coefficients.
      *
@@ -85,9 +85,8 @@ public class PointLight extends Light implements LightSource {
         return p.subtract(position).normalize();
     }
 
-//    @Override
-//    public double getDistance(Point point) {
-//        return position.distance(point);
-//    }
-
+    @Override
+    public double getDistance(Point point) {
+        return position.distance(point);
+    }
 }

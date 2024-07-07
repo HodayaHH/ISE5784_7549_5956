@@ -1,11 +1,12 @@
 // Tehila Chananayev 325435956 tehila111222@gmail.com
 // Hodaya Chananayev 324857549 chahodaya1@gmail.com
 
+import primitives.Double3;
+import primitives.Point;
+import primitives.Vector;
+
 import static java.lang.System.out;
-
 import static primitives.Util.isZero;
-
-import primitives.*;
 
 /**
  * Test program for the 1st stage

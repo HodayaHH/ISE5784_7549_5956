@@ -1,29 +1,40 @@
 package renderer;
 
-import static java.awt.Color.*;
-
-import org.junit.jupiter.api.Test;
-
-import geometries.*;
+import geometries.Sphere;
+import geometries.Triangle;
 import lighting.AmbientLight;
-import primitives.*;
-import renderer.*;
+import org.junit.jupiter.api.Test;
+import primitives.Color;
+import primitives.Double3;
+import primitives.Point;
+import primitives.Vector;
 import scene.Scene;
 
-/** Test rendering a basic image
- * @author Dan */
+import static java.awt.Color.*;
+
+/**
+ * Test rendering a basic image
+ *
+ * @author Dan
+ */
 public class RenderTests {
-    /** Scene of the tests */
-    private final Scene          scene  = new Scene("Test scene");
-    /** Camera builder of the tests */
+    /**
+     * Scene of the tests
+     */
+    private final Scene scene = new Scene("Test scene");
+    /**
+     * Camera builder of the tests
+     */
     private final Camera.Builder camera = Camera.getBuilder()
             .setRayTracer(new SimpleRayTracer(scene))
             .setLocation(Point.ZERO).setDirection(new Vector(0, 0, -1), new Vector(0, 1, 0))
             .setViewPlaneDistance(100)
             .setViewPlaneSize(500, 500);
 
-    /** Produce a scene with basic 3D model and render it into a png image with a
-     * grid */
+    /**
+     * Produce a scene with basic 3D model and render it into a png image with a
+     * grid
+     */
     @Test
     public void renderTwoColorTest() {
         scene.geometries.add(new Sphere(new Point(0, 0, -100), 50d),
@@ -44,6 +55,7 @@ public class RenderTests {
                 .printGrid(100, new Color(YELLOW))
                 .writeToImage();
     }
+
     /**
      * Produce a scene with basic 3D model - including individual lights of the
      * bodies and render it into a png image with a grid
@@ -70,7 +82,10 @@ public class RenderTests {
                 .printGrid(100, new Color(WHITE))
                 .writeToImage();
     }
-    /** Test for XML based scene - for bonus */
+
+    /**
+     * Test for XML based scene - for bonus
+     */
     @Test
     public void basicRenderXml() {
         // enter XML file name and parse from XML file into scene object
