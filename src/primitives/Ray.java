@@ -25,6 +25,19 @@ public class Ray {
         this.direction = direction.normalize(); //Normalizes the direction vector
     }
 
+    private static final double EPS = 0.1;
+    /**
+     * Constructor for Ray with point displacement.
+     *
+     * @param originPoint The origin point of the ray.
+     * @param direction The direction vector of the ray.
+     * @param normal The normal vector used to displace the origin point.
+     */
+    public Ray(Point originPoint, Vector direction, Vector normal) {
+        this.head =originPoint.add(normal.scale(EPS));
+        this.direction = direction;
+    }
+
     //Override function toString
     @Override
     public String toString() {
