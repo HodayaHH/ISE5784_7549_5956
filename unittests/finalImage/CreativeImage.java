@@ -104,7 +104,7 @@ public class CreativeImage {
 
         // Rendering the scene
         camera
-                .setImageWriter(new ImageWriter("CreativeImage", 1000, 1000))
+                .setImageWriter(new ImageWriter("final image- with improvement", 1000, 1000))
                 .build()
                 .renderImage()
                 .writeToImage();

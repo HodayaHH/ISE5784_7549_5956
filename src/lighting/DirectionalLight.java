@@ -8,7 +8,9 @@ import primitives.Vector;
  * Class representing a directional light source
  */
 public class DirectionalLight extends Light implements LightSource {
-
+    /**
+     *  The direction of the light.
+     */
     private Vector direction;
 
     /**
@@ -20,7 +22,7 @@ public class DirectionalLight extends Light implements LightSource {
      */
     public DirectionalLight(Color intensity, Vector direction) {
         super(intensity);
-        this.direction = direction.normalize();//++נרמלתי
+        this.direction = direction.normalize();
     }
 
     /**
@@ -47,6 +49,13 @@ public class DirectionalLight extends Light implements LightSource {
         return direction;
     }
 
+    /**
+     * Gets the distance from the light source to a given point.
+     * This implementation returns positive infinity, indicating that the light source is considered to be at an infinite distance.
+     *
+     * @param point The point to which to calculate the distance from the light source.
+     * @return Positive infinity, indicating the light source is at an infinite distance.
+     */
     @Override
     public double getDistance(Point point) {
         return Double.POSITIVE_INFINITY;

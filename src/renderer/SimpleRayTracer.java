@@ -240,7 +240,6 @@ public class SimpleRayTracer extends RayTracerBase {
 
         return material.Kd.scale(Math.abs(nl));
     }
-
 }
 
 

@@ -10,7 +10,7 @@ import primitives.Vector;
  */
 public class PointLight extends Light implements LightSource {
 
-    protected Point position;
+    protected Point position;// The position of the point light in space
     private double Kc = 1.0; // Constant attenuation coefficient
     private double kl = 0.0;// Linear attenuation coefficient
     private double kq = 0.0;// Quadratic attenuation coefficient
@@ -85,6 +85,13 @@ public class PointLight extends Light implements LightSource {
         return p.subtract(position).normalize();
     }
 
+    /**
+     * Gets the distance from the light source to a given point.
+     * This implementation returns the actual distance between the light source's position and the given point.
+     *
+     * @param point The point to which to calculate the distance from the light source.
+     * @return The distance between the light source's position and the given point.
+     */
     @Override
     public double getDistance(Point point) {
         return position.distance(point);

@@ -90,7 +90,7 @@ public class Camera implements Cloneable {
 
         for (int i = 0; i < nY; i++) {
             for (int j = 0; j < nX; j++) {
-                castRay(nX, nY, j, i);
+                castRays(nX, nY, j, i);
             }
         }
         return this;
@@ -256,4 +256,55 @@ public class Camera implements Cloneable {
             return camera.clone();
         }
     }
+
+
+
+    /**
+     * Number of samples for antialiasing to improve the smoothing of curves.
+     */
+    private int numOfSamples = 17;
+
+    /**
+     * Casts multiple rays per pixel to achieve antialiasing by averaging the colors of the samples.
+     *
+     * @param nX Number of columns of pixels in the image.
+     * @param nY    Number of rows of pixels in the image.
+     * @param pixelX       X coordinate of the current pixel.
+     * @param pixelY       Y coordinate of the current pixel.
+     */
+    private void castRays(int nX, int nY, int pixelX, int pixelY) {
+        Color accumulatedColor = Color.BLACK; // Initialize the accumulated color for the pixel.
+        int totalSamples = numOfSamples * numOfSamples; // Total number of samples for the pixel.
+
+        double sampleStep = 1.0 / numOfSamples; // Step size between sub-pixels.
+
+        // Loop through each sub-pixel sample in the grid.
+        for (int sampleColumn = 0; sampleColumn < numOfSamples; sampleColumn++) {
+            for (int sampleRow = 0; sampleRow < numOfSamples; sampleRow++) {
+                // Calculate the offset required for each sub-pixel.
+                double subPixelOffsetX = (sampleColumn + 0.5) * sampleStep;
+                double subPixelOffsetY = (sampleRow + 0.5) * sampleStep;
+
+                // Convert sub-pixel offsets to integers.
+                int intOffsetX = (int) Math.round(subPixelOffsetX);
+                int intOffsetY = (int) Math.round(subPixelOffsetY);
+
+                // Construct the ray for the current sub-pixel.
+                Ray ray = constructRay(nX, nY, pixelX + intOffsetX, pixelY + intOffsetY);
+
+                // Trace the ray and get the color at the intersection point.
+                Color tracedColor = rayTracer.traceRay(ray);
+
+                // Add the traced color to the accumulated color.
+                accumulatedColor = accumulatedColor.add(tracedColor);
+            }
+        }
+
+        // Average the accumulated color by the total number of samples.
+        accumulatedColor = accumulatedColor.scale(1.0 / totalSamples);
+
+        // Write the final averaged color to the image.
+        imageWriter.writePixel(pixelX, pixelY, accumulatedColor);
+    }
+
 }

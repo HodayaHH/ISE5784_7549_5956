@@ -9,7 +9,9 @@ import primitives.Vector;
  * A spotlight has a specific direction and its intensity can be adjusted by a narrow beam effect.
  */
 public class SpotLight extends PointLight {
-    // The direction in which the spotlight is pointed
+    /**
+     * The direction in which the spotlight is pointed
+     */
     private Vector direction;
 
     // The narrow beam angle effect, default is 1 (no effect)

@@ -56,7 +56,7 @@ public class SceneRenderer {
 
         // Build camera and render image
         camera
-                .setImageWriter(new ImageWriter("CreativeImage", 500, 500))
+                .setImageWriter(new ImageWriter("CreativeRender", 500, 500))
                 .build()
                 .renderImage()
                 .writeToImage();
