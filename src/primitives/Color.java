@@ -132,4 +132,17 @@ public class Color {
     public String toString() {
         return "rgb:" + rgb;
     }
+
+
+    public double getRed() {
+        return rgb.d1;
+    }
+
+    public double getGreen() {
+        return rgb.d2;
+    }
+
+    public double getBlue() {
+        return rgb.d3;
+    }
 }

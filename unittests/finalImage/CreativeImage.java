@@ -27,7 +27,8 @@ public class CreativeImage {
             .setLocation(new Point(0, 0, 200))
             .setDirection(new Vector(0, -1, 0), new Vector(0, 0, 1))
             .setViewPlaneDistance(200)
-            .setViewPlaneSize(500, 500);
+            .setViewPlaneSize(500, 500)
+            .setNumOfSamples(17);
 
 
     /**
